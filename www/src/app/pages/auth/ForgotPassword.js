@@ -83,7 +83,7 @@ class ForgotPassword extends Component {
                   <div className="form-group">
                     <TextField
                       type="email"
-                      label="Email"
+                      label="邮箱"
                       margin="normal"
                       fullWidth={true}
                       name="email"
@@ -98,9 +98,10 @@ class ForgotPassword extends Component {
                   <div className="kt-login__actions">
                     <Link
                       to="/auth"
-                      className="btn btn-secondary btn-elevate kt-login__btn-secondary"
                     >
-                      Back
+                      <button type="button" className="btn btn-secondary btn-elevate kt-login__btn-secondary">
+                        返回
+                      </button>
                     </Link>
 
                     <button
@@ -108,7 +109,7 @@ class ForgotPassword extends Component {
                       className="btn btn-primary btn-elevate kt-login__btn-primary"
                       disabled={isSubmitting}
                     >
-                      Submit
+                      提交
                     </button>
                   </div>
                 </form>

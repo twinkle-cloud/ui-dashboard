@@ -29,11 +29,11 @@ function Login(props) {
     <>
       <div className="kt-login__head">
         <span className="kt-login__signup-label">
-          Don't have an account yet?
+          没有账号?
         </span>
         &nbsp;&nbsp;
         <Link to="/auth/registration" className="kt-link kt-login__signup-link">
-          Sign Up!
+          立即注册!
         </Link>
       </div>
 
@@ -127,7 +127,7 @@ function Login(props) {
                 <div className="form-group">
                   <TextField
                     type="email"
-                    label="Email"
+                    label="邮箱"
                     margin="normal"
                     className="kt-width-full"
                     name="email"
@@ -143,7 +143,7 @@ function Login(props) {
                   <TextField
                     type="password"
                     margin="normal"
-                    label="Password"
+                    label="密码"
                     className="kt-width-full"
                     name="password"
                     onBlur={handleBlur}
@@ -173,14 +173,14 @@ function Login(props) {
                     )}`}
                     style={loadingButtonStyle}
                   >
-                    Sign In
+                    登录
                   </button>
                 </div>
               </form>
             )}
           </Formik>
 
-          <div className="kt-login__divider">
+          {/* <div className="kt-login__divider">
             <div className="kt-divider">
               <span />
               <span>OR</span>
@@ -201,7 +201,7 @@ function Login(props) {
               <i className="fab fa-google" />
               Google
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

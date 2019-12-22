@@ -3,9 +3,20 @@ import { Formik } from "formik";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FormattedMessage, injectIntl } from "react-intl";
-import { Checkbox, FormControlLabel, TextField } from "@material-ui/core";
+import {
+  Checkbox,
+  FormControlLabel,
+  TextField,
+  InputAdornment,
+  FormControl,
+  Button,
+  OutlinedInput,
+  InputLabel,
+  FormHelperText
+} from "@material-ui/core";
 import * as auth from "../../store/ducks/auth.duck";
 import { register } from "../../crud/auth.crud";
+import '../../styles/register.scss'
 
 function Registration(props) {
   const { intl } = props;
@@ -22,13 +33,14 @@ function Registration(props) {
         <Formik
           initialValues={{
             email: "",
-            fullname: "",
-            username: "",
             password: "",
             acceptTerms: true,
-            confirmPassword: ""
+            confirmPassword: "",
+            phone: '',
+            validateCode: ''
           }}
           validate={values => {
+            console.log(values)
             const errors = {};
 
             if (!values.email) {
@@ -40,18 +52,6 @@ function Registration(props) {
             ) {
               errors.email = intl.formatMessage({
                 id: "AUTH.VALIDATION.INVALID_FIELD"
-              });
-            }
-
-            if (!values.fullname) {
-              errors.fullname = intl.formatMessage({
-                id: "AUTH.VALIDATION.REQUIRED_FIELD"
-              });
-            }
-
-            if (!values.username) {
-              errors.username = intl.formatMessage({
-                id: "AUTH.VALIDATION.REQUIRED_FIELD"
               });
             }
 
@@ -70,6 +70,18 @@ function Registration(props) {
                 "Password and Confirm Password didn't match.";
             }
 
+            // 校验手机号码
+            if(!values.phone){
+              errors.phone = '请输入手机号码'
+            }else if(!/^1\d{10}$/g.test(values.phone)){
+              errors.phone = '请输入正确的11位手机号码'
+            }
+
+            // 校验验证码
+            if(/^1\d{10}$/g.test(values.phone)&&!values.validateCode){
+              errors.validateCode = '请输入验证码'
+            }
+
             if (!values.acceptTerms) {
               errors.acceptTerms = "Accept Terms";
             }
@@ -79,8 +91,6 @@ function Registration(props) {
           onSubmit={(values, { setStatus, setSubmitting }) => {
             register(
               values.email,
-              values.fullname,
-              values.username,
               values.password
             )
               .then(({ data: { accessToken } }) => {
@@ -115,21 +125,7 @@ function Registration(props) {
 
               <div className="form-group mb-0">
                 <TextField
-                  margin="normal"
-                  label="Fullname"
-                  className="kt-width-full"
-                  name="fullname"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.fullname}
-                  helperText={touched.fullname && errors.fullname}
-                  error={Boolean(touched.fullname && errors.fullname)}
-                />
-              </div>
-
-              <div className="form-group mb-0">
-                <TextField
-                  label="Email"
+                  label="邮箱"
                   margin="normal"
                   className="kt-width-full"
                   name="email"
@@ -138,20 +134,7 @@ function Registration(props) {
                   value={values.email}
                   helperText={touched.email && errors.email}
                   error={Boolean(touched.email && errors.email)}
-                />
-              </div>
-
-              <div className="form-group mb-0">
-                <TextField
-                  margin="normal"
-                  label="Username"
-                  className="kt-width-full"
-                  name="username"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.username}
-                  helperText={touched.username && errors.username}
-                  error={Boolean(touched.username && errors.username)}
+                  variant="outlined"
                 />
               </div>
 
@@ -159,7 +142,8 @@ function Registration(props) {
                 <TextField
                   type="password"
                   margin="normal"
-                  label="Password"
+                  label="密码"
+                  placeholder="6 - 16位密码，区分大小写"
                   className="kt-width-full"
                   name="password"
                   onBlur={handleBlur}
@@ -167,6 +151,7 @@ function Registration(props) {
                   value={values.password}
                   helperText={touched.password && errors.password}
                   error={Boolean(touched.password && errors.password)}
+                  variant="outlined"
                 />
               </div>
 
@@ -174,7 +159,7 @@ function Registration(props) {
                 <TextField
                   type="password"
                   margin="normal"
-                  label="Confirm Password"
+                  label="确认密码"
                   className="kt-width-full"
                   name="confirmPassword"
                   onBlur={handleBlur}
@@ -184,20 +169,61 @@ function Registration(props) {
                   error={Boolean(
                     touched.confirmPassword && errors.confirmPassword
                   )}
+                  variant="outlined"
                 />
+              </div>
+              
+              <div className="form-group mb-0">
+                <FormControl fullWidth className={'kt-width-full'}
+                  error={Boolean(
+                    touched.phone && errors.phone
+                  )}
+                  variant="outlined"
+                >
+                  <InputLabel htmlFor="standard-adornment-phone">手机号</InputLabel>
+                  <OutlinedInput
+                    id="standard-adornment-phone"
+                    name="phone"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.phone}
+                    startAdornment={<InputAdornment position="start">+86</InputAdornment>}
+                    labelWidth={42}
+                  />
+                  <FormHelperText>{touched.phone && errors.phone}</FormHelperText>
+                </FormControl>
+              </div>
+
+              <div className="form-group mb-0" style={{display:'flex'}}>
+                <TextField
+                  label="验证码"
+                  margin="normal"
+                  className="kt-width-full"
+                  name="validateCode"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.validateCode}
+                  helperText={touched.validateCode && errors.validateCode}
+                  error={Boolean(touched.validateCode && errors.validateCode)}
+                  variant="outlined"
+                  placeholder="请输入6位数字验证码"
+                />
+                <Button variant="contained" color="primary" className="btn btn-primary btn-elevate kt-login__btn-primary my-reg-btn-send">
+                  获取验证码
+                </Button>
               </div>
 
               <div className="form-group mb-0">
                 <FormControlLabel
                   label={
                     <>
-                      I agree the{" "}
+                      我同意{" "}
                       <Link
                         to="/terms"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Terms & Conditions
+                        协议 & 条款
                       </Link>
                     </>
                   }
@@ -223,7 +249,7 @@ function Registration(props) {
 
                 <Link to="/auth">
                   <button type="button" className="btn btn-secondary btn-elevate kt-login__btn-secondary">
-                    Back
+                    返回
                   </button>
                 </Link>
 
@@ -231,7 +257,7 @@ function Registration(props) {
                   disabled={isSubmitting || !values.acceptTerms}
                   className="btn btn-primary btn-elevate kt-login__btn-primary"
                 >
-                  Submit
+                  注册
                 </button>
               </div>
             </form>

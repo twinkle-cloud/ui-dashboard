@@ -1,3 +1,10 @@
+/*
+ * @Author: duchengdong
+ * @Date: 2019-11-13 21:10:06
+ * @LastEditors  : duchengdong
+ * @LastEditTime : 2019-12-22 10:44:13
+ * @Description: 
+ */
 import React from "react";
 import { useSelector } from "react-redux";
 import { IntlProvider } from "react-intl";
@@ -17,18 +24,18 @@ import jaMessages from "./messages/ja";
 import zhMessages from "./messages/zh";
 
 const allMessages = {
-  de: deMessages,
+  zh: zhMessages,
   en: enMessages,
+  de: deMessages,
   es: esMessages,
   fr: frMessages,
-  ja: jaMessages,
-  zh: zhMessages
+  ja: jaMessages
 };
 
 export default function I18nProvider({ children }) {
-  const locale = useSelector(({ i18n }) => i18n.lang);
+  const locale = useSelector(({ i18n }) => {console.log(i18n.lang);return i18n.lang});
   const messages = allMessages[locale];
-
+  console.log(locale)
   return (
       <IntlProvider locale={locale} messages={messages}>
         {children}
