@@ -1,3 +1,10 @@
+/*
+ * @Author: duchengdong
+ * @Date: 2019-10-11 09:10:02
+ * @LastEditors  : duchengdong
+ * @LastEditTime : 2019-12-25 14:12:02
+ * @Description: 
+ */
 /* eslint-disable no-script-url,jsx-a11y/anchor-is-valid */
 import React from "react";
 import { connect } from "react-redux";
@@ -35,17 +42,17 @@ class SubHeader extends React.Component {
               )}
             </LayoutContextConsumer>
 
-            <span className="kt-subheader__separator kt-subheader__separator--v" />
+            {/* <span className="kt-subheader__separator kt-subheader__separator--v" />
             <span className="kt-subheader__desc">#XRS-45670</span>
             <a
               href="#"
               className="btn btn-label-warning btn-bold btn-sm btn-icon-h kt-margin-l-10"
             >
               Add New
-            </a>
+            </a> */}
           </div>
 
-          <div className="kt-subheader__toolbar">
+          {/* <div className="kt-subheader__toolbar">
             <div className="kt-subheader__wrapper">
               <button type="button" className="btn kt-subheader__btn-primary">
                 Actions &nbsp;
@@ -53,7 +60,7 @@ class SubHeader extends React.Component {
               </button>
               <QuickActions />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

@@ -1,3 +1,10 @@
+/*
+ * @Author: duchengdong
+ * @Date: 2019-11-12 17:46:04
+ * @LastEditors  : duchengdong
+ * @LastEditTime : 2019-12-26 18:04:34
+ * @Description: 
+ */
 /**
  * Create React App entry point. This and `public/index.html` files can not be
  * changed or moved.
@@ -17,6 +24,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./_metronic/_assets/plugins/line-awesome/css/line-awesome.css";
 import "./_metronic/_assets/plugins/flaticon/flaticon.css";
 import "./_metronic/_assets/plugins/flaticon2/flaticon.css";
+// 引入antd样式
+import 'antd/es/input/style/css';
+import 'antd/es/select/style/css';
+import 'antd/es/button/style/css';
+import 'antd/es/icon/style/css';
+import 'antd/es/table/style/css'
 /**
  * Base URL of the website.
  *
