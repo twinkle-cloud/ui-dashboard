@@ -18,6 +18,8 @@ import KtContent from "./KtContent";
 import QuickPanel from "../../app/partials/layout/QuickPanel";
 import("./assets/Base.scss");
 
+const hideRoute = ['/sys/datamanage/create']
+
 const htmlClassService = new HTMLClassService();
 
 const styles = [
@@ -75,7 +77,7 @@ function Layout({
               className={`kt-content ${contentCssClasses} kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor`}
             >
               {/* <!-- begin:: Content Head --> */}
-              {subheaderDisplay && (
+              {subheaderDisplay &&!hideRoute.find(v => window.location.href.includes(v))&& (
                 <SubHeader htmlClassService={htmlClassService} />
               )}
               {/* <!-- end:: Content Head --> */}
