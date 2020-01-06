@@ -1,3 +1,10 @@
+/*
+ * @Author: duchengdong
+ * @Date: 2019-11-07 16:41:16
+ * @LastEditors  : duchengdong
+ * @LastEditTime : 2019-12-22 11:16:47
+ * @Description: 
+ */
 import React from "react";
 import clsx from "clsx";
 import { connect } from "react-redux";
@@ -7,35 +14,15 @@ import HeaderDropdownToggle from "../content/CustomDropdowns/HeaderDropdownToggl
 
 const languages = [
   {
-    lang: "en",
-    name: "English",
-    flag: toAbsoluteUrl("/media/flags/260-united-kingdom.svg")
-  },
-  {
     lang: "zh",
-    name: "Mandarin",
+    name: "简体中文",
     flag: toAbsoluteUrl("/media/flags/034-china.svg")
   },
-  {
-    lang: "es",
-    name: "Spanish",
-    flag: toAbsoluteUrl("/media/flags/128-spain.svg")
-  },
-  {
-    lang: "ja",
-    name: "Japanese",
-    flag: toAbsoluteUrl("/media/flags/063-japan.svg")
-  },
-  {
-    lang: "de",
-    name: "German",
-    flag: toAbsoluteUrl("/media/flags/162-germany.svg")
-  },
-  {
-    lang: "fr",
-    name: "French",
-    flag: toAbsoluteUrl("/media/flags/195-france.svg")
-  }
+  // {
+  //   lang: "en",
+  //   name: "English",
+  //   flag: toAbsoluteUrl("/media/flags/260-united-kingdom.svg")
+  // }
 ];
 
 class LanguageSelector extends React.Component {

@@ -1,3 +1,10 @@
+/*
+ * @Author: duchengdong
+ * @Date: 2019-11-07 16:41:16
+ * @LastEditors: duchengdong
+ * @LastEditTime: 2019-12-24 17:16:47
+ * @Description: 
+ */
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -40,14 +47,14 @@ class HeaderMobile extends React.Component {
             </button>
           )}
 
-          {headerMenuSelfDisplay && (
+          {/* {headerMenuSelfDisplay && (
             <button
               className="kt-header-mobile__toggler"
               id="kt_header_mobile_toggler"
             >
               <span />
             </button>
-          )}
+          )} */}
 
           <button
             ref={this.toggleButtonRef}

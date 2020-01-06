@@ -1,0 +1,15 @@
+.filter-Box{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-right: 36px;
+    margin-bottom: 16px;
+}
+.filter-input{
+    width: 200px;
+}

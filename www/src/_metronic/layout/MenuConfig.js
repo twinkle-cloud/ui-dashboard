@@ -935,6 +935,42 @@ export default {
             page: "antv/demo1"
           }
         ]
+      },
+      {
+        title: "系统管理",
+        root: true,
+        bullet: "dot",
+        icon: "flaticon-danger",
+        submenu: [
+          {
+            title: "用户管理",
+            page: "sys/usermanage"
+          },
+          {
+            title: "机构管理",
+            page: "sys/orgmanage"
+          },
+          {
+            title: "菜单管理",
+            page: "sys/menumanage"
+          },
+          {
+            title: "角色管理",
+            page: "sys/rolemanage"
+          },
+          {
+            title: "参数类型管理",
+            page: "sys/parammanage"
+          },
+          {
+            title: "数据字典",
+            page: "sys/datamanage"
+          },
+          {
+            title: "结果码",
+            page: "sys/codemanage"
+          }
+        ]
       }
     ]
   }

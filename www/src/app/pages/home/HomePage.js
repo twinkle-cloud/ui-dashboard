@@ -1,8 +1,8 @@
 /*
  * @Author: duchengdong
  * @Date: 2019-11-07 16:41:16
- * @LastEditors: duchengdong
- * @LastEditTime: 2019-12-10 10:22:36
+ * @LastEditors  : duchengdong
+ * @LastEditTime : 2019-12-24 16:26:28
  * @Description: 
  */
 import React, { Suspense, lazy } from "react";
@@ -24,6 +24,9 @@ const DemosPage = lazy(() =>
 const AntvPage = lazy(() =>
   import("../antv/index")
 );
+const SysPage = lazy(() =>
+import("../sys/index")
+);
 
 export default function HomePage() {
   return (
@@ -40,6 +43,7 @@ export default function HomePage() {
         <Route path="/docs" component={DocsPage} />
         <Route path="/demos" component={DemosPage} />
         <Route path="/antv" component={AntvPage} />
+        <Route path="/sys" component={SysPage} />
         <Redirect to="/error/error-v1" />
       </Switch>
     </Suspense>

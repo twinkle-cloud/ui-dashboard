@@ -1,0 +1,25 @@
+@import '../theme.scss';
+
+.datam-container {
+    min-height: 100%;
+    padding: 16px 24px;
+    background: $white;
+    color: $dark;
+
+    .blue {
+        color: $blue;
+    }
+
+    .table-box {
+        margin-top: 16px;
+    }
+
+    .editBtn {
+        cursor: pointer;
+        color: $blue;
+
+        &:hover {
+            color: $light-blue;
+        }
+    }
+}

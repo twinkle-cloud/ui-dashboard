@@ -1,3 +1,10 @@
+/*
+ * @Author: duchengdong
+ * @Date: 2019-11-07 16:41:16
+ * @LastEditors  : duchengdong
+ * @LastEditTime : 2019-12-24 17:14:19
+ * @Description: 
+ */
 import React from "react";
 import { connect } from "react-redux";
 import objectPath from "object-path";
@@ -33,10 +40,12 @@ class Header extends React.Component {
         id="kt_header"
         ref={this.headerCommonRef}
         {...headerAttributes}
+        style={{flexDirection:'row-reverse'}}
       >
         <AnimateLoading />
         {/* <!-- begin: Header Menu --> */}
-        {menuHeaderDisplay && <HMenu htmlClassService={htmlClassService} />}
+        {/* 头部隐藏掉 */}
+        {/* {menuHeaderDisplay && <HMenu htmlClassService={htmlClassService} />} */}
         {/* <!-- end: Header Menu --> */}
         {/* <!-- begin:: Header Topbar --> */}
         {/* <!-- empty div to fix topbar to stay on the right when menu-horizontal is hidden --> */}
