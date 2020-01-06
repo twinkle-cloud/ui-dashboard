@@ -1,0 +1,22 @@
+@import '../../theme.scss';
+
+.datam-create {
+    max-width: 600px;
+    .title{
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 1.5em;
+    }
+    label{
+        margin-bottom: 0;
+    }
+    .anticon {
+        vertical-align: middle;
+    }
+
+    .operate-box {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+}

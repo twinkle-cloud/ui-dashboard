@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2019-11-12 17:46:04
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-03 17:09:37
+ * @LastEditTime : 2020-01-06 17:15:17
  * @Description: 
  */
 /**
@@ -35,6 +35,8 @@ import 'antd/es/button/style/css';
 import 'antd/es/icon/style/css';
 import 'antd/es/table/style/css';
 import 'antd/es/alert/style/css';
+import 'antd/es/tooltip/style/css';
+import 'antd/es/form/style/css';
 /**
  * Base URL of the website.
  *
