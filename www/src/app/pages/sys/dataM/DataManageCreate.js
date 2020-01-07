@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2020-01-03 17:27:23
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-06 18:21:44
+ * @LastEditTime : 2020-01-07 20:34:41
  * @Description: https://github.com/yiminghe/async-validator // 校验规则参考
  */
 import React,{Component} from 'react'
@@ -11,7 +11,6 @@ import Input from 'antd/es/input'
 import Tooltip from 'antd/es/tooltip'
 import Icon from 'antd/es/icon'
 import Select from 'antd/es/select'
-import Button from 'antd/es/button'
 import Operations from '../../../components/Operations'
 import '../../../styles/sys/dataM/datamanagecreate.scss'
 
@@ -54,18 +53,7 @@ class DataManageCreate extends Component {
               sm: { span: 16 },
             },
         };
-        const tailFormItemLayout = {
-            wrapperCol: {
-              xs: {
-                span: 24,
-                offset: 0,
-              },
-              sm: {
-                span: 16,
-                offset: 8,
-              },
-            },
-        };
+        // console.log(this.props.match.params)
         return (
             <div className="datam-create">
                 <div className="title">数据字典编辑</div>

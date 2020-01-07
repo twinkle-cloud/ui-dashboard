@@ -943,11 +943,15 @@ export default {
         icon: "flaticon-danger",
         submenu: [
           {
+            title: "租户管理",
+            page: "sys/tenantmanage"
+          },
+          {
             title: "用户管理",
             page: "sys/usermanage"
           },
           {
-            title: "机构管理",
+            title: "部门管理",
             page: "sys/orgmanage"
           },
           {
