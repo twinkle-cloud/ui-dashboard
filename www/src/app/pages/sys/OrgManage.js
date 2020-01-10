@@ -2,16 +2,21 @@
  * @Author: duchengdong
  * @Date: 2019-12-24 16:45:18
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-08 20:58:48
+ * @LastEditTime : 2020-01-10 14:06:17
  * @Description: 
  */
 import React,{Component} from 'react'
 import FilterOptions from '../../components/FilterOptions'
 import Operations from '../../components/Operations'
+import TableOperateBox from '../../components/TableOperateBox'
 import Table from 'antd/es/table';
+import Icon from 'antd/es/icon';
+import Modal from 'antd/es/modal';
+import EditModal from './orgM/EditModal'
 
 import '../../styles/sys/orgmanage.scss'
 
+const { confirm } = Modal;
 const filterData = [{
     type: 1,
     label: '部门名称：'
@@ -151,7 +156,9 @@ const data = [
 export default class OrgManage extends Component {
     constructor(props){
         super(props)
-        this.state = {}
+        this.state = {
+            visible: false
+        }
         this.columns = [
             {
                 title: '部门编码',
@@ -192,18 +199,73 @@ export default class OrgManage extends Component {
                 dataIndex: 'operate',
                 width: '12%',
                 render: (value,record)=>{
-                    return <div style={{display:'flex',flexWrap:'wrap'}}>
-                        <div className='editBtn' style={{marginRight:'6px'}}>编辑</div>
-                        <div className='editBtn' onClick={this.onDelete}>删除</div>
-                    </div>
+                    const TableOperateData = [{
+                        txt:'编辑',
+                        clickHandle: ()=>{
+                            this.showModal()
+                        }
+                    },{
+                        txt:'停用',
+                        clickHandle: ()=>{
+                            console.log('停用')
+                        }
+                    },{
+                        txt:'删除',
+                        clickHandle: ()=>{
+                            this.onDelete()
+                        }
+                    }]
+                    return <TableOperateBox data={TableOperateData}/>
                 }
             },
         ];
     }
+    // 删除
+    onDelete = () => {
+        confirm({
+            title: '删除确认',
+            content: '你确定要删除这一条记录？',
+            icon: <Icon type="close-circle" style={{color: '#f5222d'}}/>,
+            okText: '确定',
+            okType: 'danger',
+            cancelText: '取消',
+            onOk() {
+              console.log('OK');
+            },
+            onCancel() {
+              console.log('Cancel');
+            },
+        });
+    }
+    
+    // 编辑
+    showModal = () => {
+        this.setState({
+          visible: true,
+        });
+    };
+
+    handleOk = e => {
+        console.log(e);
+        this.setState({
+          visible: false,
+        });
+    };
+    
+    handleCancel = e => {
+        console.log(e);
+        this.setState({
+          visible: false,
+        });
+    };
+
+    // 分页
     onChange = (pagination, filters, sorter, extra) => {
         console.log('params', pagination, filters, sorter, extra);
     }
+    
     render(){
+        const {visible} = this.state
         return (
             <div className='orgm-container'>
                 <FilterOptions 
@@ -227,11 +289,11 @@ export default class OrgManage extends Component {
                         }}
                     />
                 </div>
-                {/* <EditModal 
+                <EditModal 
                     visible={visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
-                /> */}
+                />
             </div>
         )
     }

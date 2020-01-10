@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2020-01-07 11:34:12
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-07 14:38:27
+ * @LastEditTime : 2020-01-10 14:16:07
  * @Description: 
  */
 import React,{Component} from 'react'
@@ -11,6 +11,7 @@ import EditModal from './tenantM/EditModal'
 import Table from 'antd/es/table';
 import Modal from 'antd/es/modal';
 import Icon from 'antd/es/icon';
+import TableOperateBox from '../../components/TableOperateBox'
 import '../../styles/sys/tenantmanage.scss';
 
 const { confirm } = Modal;
@@ -112,10 +113,14 @@ export default class TenantManage extends Component {
             title: '操作',
             dataIndex: 'operate',
             render: (value,record)=>{
-                return <div style={{display:'flex',flexWrap:'wrap'}}>
-                    <div className='editBtn' style={{marginRight:'6px'}} onClick={this.showModal}>编辑</div>
-                    <div className='editBtn' onClick={this.onDelete}>删除</div>
-                </div>
+                const TableOperateData = [{
+                    txt:'编辑',
+                    clickHandle: ()=>{this.showModal()}
+                },{
+                    txt:'删除',
+                    clickHandle: ()=>{this.onDelete()}
+                }]
+                return <TableOperateBox data={TableOperateData}/>
             }
         },
     ];

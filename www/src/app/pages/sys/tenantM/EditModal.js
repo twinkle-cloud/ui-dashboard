@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2020-01-07 14:34:55
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-07 20:31:53
+ * @LastEditTime : 2020-01-10 14:15:30
  * @Description: 
  */
 import React,{Component} from 'react'
@@ -22,18 +22,18 @@ const phoneExp = /^1\d{10}$/;
 const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 6 },
+      sm: { span: 4 },
     },
     wrapperCol: {
       xs: { span: 24 },
-      sm: { span: 16 },
+      sm: { span: 17 },
     },
 };
 
 const halfFormItemLayout1 = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 12 },
+      sm: { span: 8 },
     },
     wrapperCol: {
       xs: { span: 24 },
@@ -44,7 +44,7 @@ const halfFormItemLayout1 = {
 const halfFormItemLayout2 = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 6 },
+      sm: { span: 4 },
     },
     wrapperCol: {
       xs: { span: 24 },
