@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2019-12-24 16:45:18
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-10 14:06:17
+ * @LastEditTime : 2020-01-10 14:38:03
  * @Description: 
  */
 import React,{Component} from 'react'
@@ -43,22 +43,6 @@ const filterData = [{
     style: {
         margin: '0 0 16px 0'
     }
-}]
-
-const operateData = [{
-    type: 'route',
-    btnType:'primary',
-    txt: '新增',
-    style: {
-        margin: '0 12px 0 0'
-    },
-    icon: {
-        type:'plus',
-        style:{
-            transform:'translateY(-3px)'
-        }
-    },
-    path:'/sys/datamanage/create'
 }]
 
 const data = [
@@ -219,6 +203,22 @@ export default class OrgManage extends Component {
                 }
             },
         ];
+        this.operateData = [{
+            btnType:'primary',
+            txt: '新增',
+            style: {
+                margin: '0 12px 0 0'
+            },
+            icon: {
+                type:'plus',
+                style:{
+                    transform:'translateY(-3px)'
+                }
+            },
+            onclick: ()=>{
+                this.showModal()
+            }
+        }]
     }
     // 删除
     onDelete = () => {
@@ -272,7 +272,7 @@ export default class OrgManage extends Component {
                     sourceData={filterData}
                 />
                 <Operations 
-                    sourceData={operateData}
+                    sourceData={this.operateData}
                 /> 
                 <div className="table-box">
                     <Table 

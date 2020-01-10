@@ -1,7 +1,7 @@
 export default {
-  // header: {
-  //   self: {},
-    // items: [
+  header: {
+    self: {},
+    items: [
     //   {
     //     title: "Dashboards",
     //     root: true,
@@ -497,8 +497,8 @@ export default {
       //     }
       //   ]
       // }
-  //   ]
-  // },
+    ]
+  },
   aside: {
     self: {},
     items: [
