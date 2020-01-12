@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2019-12-24 16:48:09
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-03 17:57:59
+ * @LastEditTime : 2020-01-10 11:05:12
  * @Description: 
  */
 import React,{Component} from 'react'
@@ -10,7 +10,12 @@ import FilterOptions from '../../components/FilterOptions'
 import Operations from '../../components/Operations'
 import Alert from '../../components/Alert'
 import Table from 'antd/es/table';
+import Modal from 'antd/es/modal';
+import Icon from 'antd/es/icon';
+import TableOperateBox from '../../components/TableOperateBox'
 import '../../styles/sys/datamanage.scss';
+
+const { confirm } = Modal;
 
 const filterData = [{
     type: 1,
@@ -67,104 +72,6 @@ const operateData = [{
     }
 }]
 
-const columns = [{
-        title: '序号',
-        dataIndex: 'no',
-    },
-    {
-        title: '属主',
-        dataIndex: 'belongs',
-    },
-    {
-        title: '字典',
-        dataIndex: 'keyName',
-    }, {
-        title: '字典值',
-        dataIndex: 'keyValue',
-    },
-    {
-        title: '字典编码',
-        dataIndex: 'keyCode',
-    },
-    {
-        title: '文本名',
-        dataIndex: 'keyText',
-    }, {
-        title: '状态',
-        dataIndex: 'status',
-        filters: [{
-                text: '已启用',
-                value: '已启用',
-            },
-            {
-                text: '进行中',
-                value: '进行中',
-            },
-            {
-                text: '成功',
-                value: '成功',
-            },
-            {
-                text: '失败',
-                value: '失败',
-            },
-            {
-                text: '警告',
-                value: '警告',
-            },
-        ],
-        onFilter: (value, record) => record.status.indexOf(value) === 0
-    },
-    {
-        title: '类型',
-        dataIndex: 'type',
-        filters: [{
-                text: '系统自有',
-                value: '系统自有',
-            },
-            {
-                text: '自定义',
-                value: '自定义',
-            },
-            {
-                text: '成功',
-                value: '成功',
-            },
-            {
-                text: '失败',
-                value: '失败',
-            },
-            {
-                text: '警告',
-                value: '警告',
-            },
-        ],
-        onFilter: (value, record) => record.type.indexOf(value) === 0
-    },
-    {
-        title: '创建时间',
-        dataIndex: 'createTime',
-        sorter: (a, b) => new Date(a.createTime).getTime() - new Date(b.createTime).getTime(),
-        sortDirections: ['descend', 'ascend'],
-    },
-    {
-        title: '预期完成时间',
-        dataIndex: 'finishTime',
-        sorter: (a, b) => new Date(a.finishTime).getTime() - new Date(b.finishTime).getTime(),
-        sortDirections: ['descend', 'ascend'],
-    },
-    {
-        title: '操作',
-        dataIndex: 'operate',
-        render: (value,record)=>{
-            return <div style={{display:'flex',flexWrap:'wrap'}}>
-                <div className='editBtn' style={{marginRight:'6px'}}>编辑</div>
-                <div className='editBtn'>删除</div>
-            </div>
-        }
-    },
-];
-
 const rowSelection = {
     onChange: (selectedRowKeys, selectedRows) => {
       console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
@@ -198,8 +105,137 @@ const data = [{
 }]
 
 export default class DataManage extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            
+        }
+        this.columns = [{
+                title: '序号',
+                dataIndex: 'no',
+            },
+            {
+                title: '属主',
+                dataIndex: 'belongs',
+            },
+            {
+                title: '字典',
+                dataIndex: 'keyName',
+            }, {
+                title: '字典值',
+                dataIndex: 'keyValue',
+            },
+            {
+                title: '字典编码',
+                dataIndex: 'keyCode',
+            },
+            {
+                title: '文本名',
+                dataIndex: 'keyText',
+            }, {
+                title: '状态',
+                dataIndex: 'status',
+                filters: [{
+                        text: '已启用',
+                        value: '已启用',
+                    },
+                    {
+                        text: '进行中',
+                        value: '进行中',
+                    },
+                    {
+                        text: '成功',
+                        value: '成功',
+                    },
+                    {
+                        text: '失败',
+                        value: '失败',
+                    },
+                    {
+                        text: '警告',
+                        value: '警告',
+                    },
+                ],
+                onFilter: (value, record) => record.status.indexOf(value) === 0
+            },
+            {
+                title: '类型',
+                dataIndex: 'type',
+                filters: [{
+                        text: '系统自有',
+                        value: '系统自有',
+                    },
+                    {
+                        text: '自定义',
+                        value: '自定义',
+                    },
+                    {
+                        text: '成功',
+                        value: '成功',
+                    },
+                    {
+                        text: '失败',
+                        value: '失败',
+                    },
+                    {
+                        text: '警告',
+                        value: '警告',
+                    },
+                ],
+                onFilter: (value, record) => record.type.indexOf(value) === 0
+            },
+            {
+                title: '创建时间',
+                dataIndex: 'createTime',
+                sorter: (a, b) => new Date(a.createTime).getTime() - new Date(b.createTime).getTime(),
+                sortDirections: ['descend', 'ascend'],
+            },
+            {
+                title: '预期完成时间',
+                dataIndex: 'finishTime',
+                sorter: (a, b) => new Date(a.finishTime).getTime() - new Date(b.finishTime).getTime(),
+                sortDirections: ['descend', 'ascend'],
+            },
+            {
+                title: '操作',
+                dataIndex: 'operate',
+                render: (value,record)=>{
+                    const TableOperateData = [{
+                        txt:'编辑',
+                        clickHandle: ()=>{this.onDelete()}
+                    },{
+                        txt:'删除',
+                        clickHandle: ()=>{this.onDelete()}
+                    }]
+                    return <TableOperateBox data={TableOperateData}/>
+                    
+                    // <div style={{display:'flex',flexWrap:'wrap'}}>
+                    //     <div className='editBtn' style={{marginRight:'6px'}}>编辑</div>
+                    //     <div className='editBtn' onClick={this.onDelete}>删除</div>
+                    // </div>
+                }
+            },
+        ];
+    }
     onChange = (pagination, filters, sorter, extra) => {
         console.log('params', pagination, filters, sorter, extra);
+    }
+    // 删除
+    onDelete = () => {
+        confirm({
+            title: '删除确认',
+            content: '你确定要删除这一条记录？',
+            icon: <Icon type="close-circle" style={{color: '#f5222d'}}/>,
+            okText: '确定',
+            okType: 'danger',
+            cancelText: '取消',
+            onOk() {
+              console.log('OK');
+            },
+            onCancel() {
+              console.log('Cancel');
+            },
+        });
     }
     render(){
         return (
@@ -216,7 +252,7 @@ export default class DataManage extends Component {
                 <div className="table-box">
                     <Table 
                         rowKey={'id'} 
-                        columns={columns} 
+                        columns={this.columns} 
                         rowSelection={rowSelection}
                         dataSource={data}
                         onChange={this.onChange} 

@@ -1,0 +1,47 @@
+@import '../theme.scss';
+
+.p-operateBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.p-editBtn {
+    margin-right: 6px;
+    cursor: pointer;
+    color: $blue;
+
+    &:hover {
+        color: $light-blue;
+        text-decoration: underline;
+    }
+
+    &:last-child {
+        margin: 0;
+    }
+}
+
+
+
+.p-operateBox-overlay {
+    .ant-popover-inner-content {
+        padding: 0px 8px;
+    }
+
+    .p-more-edit {
+        cursor: pointer;
+        color: $blue;
+        text-align: center;
+        height: 30px;
+        line-height: 20px;
+        padding: 5px 8px;
+        border-bottom: 1px solid #ccc;
+
+        &:hover {
+            color: $light-blue;
+        }
+
+        &:last-child {
+            border-bottom: 0 none;
+        }
+    }
+}
