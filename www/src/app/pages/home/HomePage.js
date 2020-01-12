@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2019-11-07 16:41:16
  * @LastEditors  : duchengdong
- * @LastEditTime : 2019-12-24 16:26:28
+ * @LastEditTime : 2020-01-12 16:01:54
  * @Description: 
  */
 import React, { Suspense, lazy } from "react";
@@ -18,12 +18,12 @@ const GoogleMaterialPage = lazy(() =>
 const ReactBootstrapPage = lazy(() =>
   import("./react-bootstrap/ReactBootstrapPage")
 );
-const DemosPage = lazy(() =>
-  import("../demos/DemosPage")
-);
-const AntvPage = lazy(() =>
-  import("../antv/index")
-);
+// const DemosPage = lazy(() =>
+//   import("../demos/DemosPage")
+// );
+// const AntvPage = lazy(() =>
+//   import("../antv/index")
+// );
 const SysPage = lazy(() =>
 import("../sys/index")
 );
@@ -41,8 +41,8 @@ export default function HomePage() {
         <Route path="/google-material" component={GoogleMaterialPage} />
         <Route path="/react-bootstrap" component={ReactBootstrapPage} />
         <Route path="/docs" component={DocsPage} />
-        <Route path="/demos" component={DemosPage} />
-        <Route path="/antv" component={AntvPage} />
+        {/* <Route path="/demos" component={DemosPage} /> */}
+        {/* <Route path="/antv" component={AntvPage} /> */}
         <Route path="/sys" component={SysPage} />
         <Redirect to="/error/error-v1" />
       </Switch>
