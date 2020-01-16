@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2020-01-03 17:27:23
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-07 20:34:41
+ * @LastEditTime : 2020-01-16 16:16:25
  * @Description: https://github.com/yiminghe/async-validator // 校验规则参考
  */
 import React,{Component} from 'react'
@@ -20,7 +20,7 @@ const { TextArea } = Input;
 class DataManageCreate extends Component {
     constructor(props){
         super(props)
-        this. operateData = [{
+        this.operateData = [{
             btnType:'primary',
             txt: '确定',
             onclick: this.handleSubmit

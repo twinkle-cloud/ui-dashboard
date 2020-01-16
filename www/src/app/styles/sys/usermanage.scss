@@ -1,0 +1,36 @@
+@import '../theme.scss';
+
+.userM-container {
+    min-height: 100%;
+    padding: 16px 24px;
+    background: $white;
+    color: $dark;
+
+    .table-box {
+        margin-top: 16px;
+        display: flex;
+        justify-content: stretch;
+
+        .left-tree{
+            width: 300px;
+            flex: none;
+        }
+
+        .right-table{
+            flex: auto;
+        }
+    }
+
+    .editBtn {
+        cursor: pointer;
+        color: $blue;
+
+        &:hover {
+            color: $light-blue;
+        }
+    }
+    // antd 样式覆盖
+    .anticon{
+        vertical-align: middle;
+    }
+}

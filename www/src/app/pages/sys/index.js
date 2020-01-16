@@ -2,7 +2,7 @@
  * @Author: duchengdong
  * @Date: 2019-12-24 16:24:02
  * @LastEditors  : duchengdong
- * @LastEditTime : 2020-01-07 11:39:22
+ * @LastEditTime : 2020-01-16 16:14:36
  * @Description: 
  */
 import React from "react";
@@ -13,6 +13,7 @@ import DataManage from './DataManage'
 import MenuManage from './MenuManage'
 import OrgManage from './OrgManage'
 import ParamManage from './ParamManage'
+import RoleManageCreate from './roleM/RoleManageCreate'
 import RoleManage from './RoleManage'
 import UserManage  from "./UserManage"
 import TenantManage from './TenantManage'
@@ -30,6 +31,8 @@ export default function SysPage() {
         
         <Route path="/sys/menumanage" component={MenuManage} />
         <Route path="/sys/parammanage" component={ParamManage} />
+        {/* 角色管理 */}
+        <Route path="/sys/rolemanage/create/:id?" component={RoleManageCreate} />
         <Route path="/sys/rolemanage" component={RoleManage} />
         <Route path="/sys/usermanage" component={UserManage} />
         <Route path="/sys/orgmanage" component={OrgManage} />
